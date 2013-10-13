@@ -1,0 +1,47 @@
+\documentclass{article}
+
+\begin{document}
+\title{Survey on Databases being used in Electronic Health Records}   % type title between braces
+\author{Enver Bahar}         % type author(s) between braces
+\date{\today}    % type date between braces
+\maketitle
+
+\begin{abstract}
+This article gives a brief comparison between SQL and NoSQL databases. It discusses what kind of database specifications might be beneficial for storage of Electronic Health Records (EHR), and gives examples of EHR systems using both SQL and NoSQL solutions. Finally it gives some suggestions for internal use cases. \\
+\end{abstract} 
+
+Storage of data and its process are the key points in most of the business cases.  Healtcare industry which also deals with a lot of patient information is one of the key industries in this field. 
+Even in some cases wrong processing of health care data  may result fatally.
+ 
+In health care this need is becoming more obvious, as companies are desperately trying to mine EHRs to lower cost and minimize readmissions, as the government plans to reimburse heavily if companies can proactively avoid readmissions. Electronic Health Records are really important and getting more and more popular. Currently in US, a lot hospitals are trying to store EHR so that extensive queries can be run against and speed up the process of information retrieval about the storage systems. 
+
+\section{SQL vs NoSQL - which is better for EHR}
+
+There are several database systems available, and making a decision between available options is a pretty tough issue and mostly depends on the use cases. Let's talk about first the SQL databases which are also called Relational Databases. 
+
+\subsection{SQL - Relational Databases}
+
+%There are arguments against NoSQL that aren't simply defenses of SQL. However, the early pioneers of NoSQL (Google and Amazon especially) developed databases after determining that relational databases didn’t serve their needs—setting the ground for the direct assault on SQL.
+
+SQL databases ruled the database world last 40 years. 
+
+In Brainlab -if I am not wrong- all of the database backends are SQL based. 
+
+
+\subsection{NoSQL Databases}
+%http://www.mongodb.com/nosql
+
+
+\section{Market Examples}
+% having sparse matrixes, use nosql
+% query by key
+% easy to store
+%As a simple example, you might have a Contacts database, and each person in the database could have varying fields. Some contacts might have several phone numbers of different types; some contacts might have several email addresses. Yes, you could normalize this into a relational database. But in this imagined application, rarely would you just get a list of phone numbers. Instead, most times you would want a name with all phone numbers associated with that name. Is it really necessary to force normalization into the picture and always store the phone numbers in a separate table, only to be joined during virtually every single lookup?
+%You can certainly do it either way: Store the phones in a separate phone table. Or you could use document storage and just group it all together, and then pull the data in as a single object. This is where a database such as MongoDB really shines. You can store ad-hoc records, and pull them into an object in one shot. You can index the collection on any fields you want (most likely name) and then pull the document into a single JavaScript object with one lookup.
+
+\section{Which one?}
+Adding a new information about a patient let's say tumor case. In SQL this needs to result as a new table column addition. Which needs to be run to the whole table in the database. However in NoSQL document based database this can be done easily with simple add statement. So the user can go and add. 
+
+
+
+\end{document}
