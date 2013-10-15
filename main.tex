@@ -28,17 +28,54 @@ There are several database systems available, and making a decision between avai
 Let's first talk about the SQL databases which are also called Relational Databases. 
 
 \subsection{SQL - Relational Databases}
-SQL(Structured Query Language) databases are formally named as \emph{Relational Database}. Because it is manipulated by SQL language, the term "SQL Database" became more popular. Relational database is perceived by the user as a collection of two dimensional tables where all data are stored. The concept is proposed by Dr. Codd in 1970 and since 1980 it is the predominant choice for the storage of information in new databases used for financial records, manufacturing and logistical information, personnel data, and much more \cite{online1}. Basically relational model consists of components such collection of objects and relations which are stored as tables and set of operations to act on the relations.
+SQL(Structured Query Language) databases are formally named as \emph{Relational Database}. Because it is manipulated by SQL language, the term "SQL Database" became more popular. Relational database is perceived by the user as a collection of two dimensional tables where all data are stored. The concept is proposed by Dr. Codd in 1970 and since 1980 it is the predominant choice for the storage of information in new databases used for financial records, manufacturing and logistical information, personnel data, and much more \cite{online1}. 
+
+A relational database essentially is a group of entities. Tables are made of rows and columns. There are some constraints and relationships that defined between them. Relational databases use SQL for queries, and result sets are acquired from queries that access data from one or more tables. Multiple tables being accessed in a single query are joined together, typically by a criterion defined in the table relationship columns. In order to ensure data consistency and to remove data duplication, database normalization, which is the process of organizing the fields and tables of a relational database, is used \cite{clouddb2}.  
 
 Relational databases are managed by Relational Database Management System(RDBMS). RDBMS is basically a software to manage the database.  According to DB-Engine \cite{online2}, which is an initiative to collect and present information on database management systems, top five RDBMS by means of market sharing are as following: Oracle, MySQL, Microsoft SQL Server(MSSQL), PostreSQL and DB2. In Brainlab, all of the databases are Relational Databases and the database management system that is currently being used is MSSQL.
 
-Let's talk about the characteristics of relational databases. First of all relational databases have a long history, which means that they are stable, and have long established standard. All relational databases offer SQL as a language, therefore moving from one vendor to another is trivial. 
+Let's talk about the good sides of relational databases. First of all relational databases are a known quantity: there are proven solutions for nearly every major problem a web developer would run into. They have a long history, which means that they are stable, and have long established standard. All relational databases offer SQL as a language, therefore moving from one vendor to another is trivial. SQL is a complete database language that is written like the English language - the statements are easy and understandable. 
+
+One of the bad sides of relational databases is it might be really hard to design complex databases. One needs to carefully create ER diagrams, normalize the tables, choose the primary keys and set the relationships in order to make a good design which are kind of a long and hard task. Additionally, relational databases are not good if the data size is bigger than 500GB. Scaling after that amount of data is getting more and more troublesome, and can be really expensive as well. Furthermore, relational databases have a strict table-column-row organization. When the content is changing dynamically, or the content needs to be configurable, such a relational database might not be a good solution.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l | l |}
+\hline
+				&	Circa 1975						&	Circa 2011	    					\\
+				&	Online applications				&	Interactive web applications		\\
+\hline \hline
+Users 			&	2000 online users=End point		&	2000 Online users=Start point		\\
+				&	Static user population			&	Dynamic user population				\\
+\hline
+Applications 	&	Business process automation		&	Business process innovation			\\
+				&	Highly structured data records	&	Structured, semi- and unstructured	\\
+\hline
+Infrastructure 	&	Data network in its infancy		&	Universal high speed data networking\\
+				&	Centralized computing (Main		&	Distributed computing (Networked	\\
+				&		frames and mini computing)	&		servers and virtual machines)	\\				
+				& 	Memory scarce and expensive		&	Memory plenty and cheap				\\
+\hline 
+\end{tabular}
+	\caption{Comparison of tendencies from 1975 and today}
+	\label{tab:nowandthen}
+\end{table}
+
 
 \subsection{NoSQL Databases}
 %http://www.mongodb.com/nosql
 %There are arguments against NoSQL that aren't simply defenses of SQL. However, the early pioneers of NoSQL (Google and Amazon especially) developed databases after determining that relational databases didn’t serve their needs—setting the ground for the direct assault on SQL.
+Currently relational databases are the predominant choice and the reasons for this are not trivial: they are constantly offered as one of the best mix of simplicity, robustness, flexibility, performance, scalability, and compatibility in managing generic data. However to offer all of this relational databases have to massively complex internally. For example, a relatively simple SELECT statement could have hundreds of potential query execution paths, which the optimizer would evaluate at run time. RDBMS determines the execution plan that best answers the requests by using cost based algorithms, and these are hidden to the users \cite{clouddb4}. Although RDBMS have provided database users with one of the best \emph{mix} of simplicity, robustness, flexibility, performance, scalability, and compatibility, their performance in each of these areas are not necessarily better than an alternate solution concentrating on one of these benefits specially. This has not been a problem so far because RDBMS popularity has dominated the need to push any of these boundaries, because if you really need that could be solved by a relational database, alternatives always were available to fill those gaps \cite{clouddb5}.
 
-% Creating an ER diagram, normalizing tables, choosing primary keys, and setting relationships are all so ingrained in RDBMS users that it is difficult to separate the data modeling process from the underlying goal of data management.   When one has spent so much time building and understanding relational schema, moving to a schema-less data store feels completely wrong.
+Today however, there is a different situation(Table ~\ref{tab:nowandthen}). The new generation applications require processing of hundreds of gigabytes, terabytes, even petabytes of data. For an increasing number of applications, one of these benefits becoming more crucial and it is rapidly becoming mainstream. This requirement is beginning to eclipse others in importance. This benefit is \emph{Scalability}. Scalability is defined as the ability of a database to continue to function well when its volume is changed\cite{online6}. Every day more and more applications with massive workloads are launched, such as web services. Their scalability requirements can change very quickly and grow very large. There are cases where the load triples in a single day, and the hardware needs to be quickly upgraded. This scenario is too difficult to manage with a relational database. When scaling needs to be done on a single server node, it can be done on relational databases well. However, when the capacity of that single node is reached, the load needs to be distributed to multiple server nodes. This is when the complexities become overpowering, and hard to implement. When this amount reaches to hundreds or thousands of nodes, the characteristics that make RDBMS so charming drastically reduce their viability as platforms for large distribud systems \cite{clouddb4}. In response to these demands, a new type of database is created: NoSQL.
+
+The term of \emph{NoSQL} describes the new kind of databases that are available in response to the limitations of existing relational databases. In NoSQL databases, data is still stored in tables, but it does not have the expected normalization. Instead, one of the primary storage is key-value pairs which is similar to a hash map.  The transaction speed is overwhelming, and this requires large portions of the database to be in memory for quick reads and writes rather than stored on the disk. Old fashioned databases are not built with this kind of performance in mind. NoSQL databases allow for a great deal of optimization such as horizontal partitioning, or sharding which allows logically segregated data sets to be stored seperately \cite{clouddb9}. 
+
+
+So NoSQL is a database that is especially build for big data, and is the ideal choice for the data which increase really fast. How about healthcare? I assume that in healthcare this increase is not going to be as fast as big web companies, but still there are good sides of NoSQL that can be used. First thing that might be is the usage of dynamic schemas. In relational databases table schemas have to be defined before you can add data. For example you might want to store information about your patients such as name, phone numbers, address - a SQL database needs to know this in advance. So if you decide in further to change or add some fields like whether this patient has cancer or not, you will need to add that column to the database, and then migrate the entire database to the new schema. If the database is really large, this is a very slow process and this will cause significant downtime. In NoSQL databases on the other hand, there is no such a defined schema. That makes it easy to make significant application changes in real-time, without worrying about service interruptions - which means development is faster, code integration is more reliable, and less database administrator time is needed. If we want to add another column to our patient table, for example the blood type or whether he has a disease or not, it is done immediately in NoSQL databases.
+
+
+Bad sides: Not standardized,
 
 \section{Market Examples}
 % having sparse matrixes, use nosql
