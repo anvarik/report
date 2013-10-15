@@ -49,12 +49,14 @@ Users 			&	2000 online users=End point		&	2000 Online users=Start point		\\
 				&	Static user population			&	Dynamic user population				\\
 \hline
 Applications 	&	Business process automation		&	Business process innovation			\\
-				&	Highly structured data records	&	Structured, semi- and unstructured	\\
+				&	Highly structured data records	&	Structured, semi- and 				\\
+				&									&	unstructured						\\
 \hline
-Infrastructure 	&	Data network in its infancy		&	Universal high speed data networking\\
-				&	Centralized computing (Main		&	Distributed computing (Networked	\\
-				&		frames and mini computing)	&		servers and virtual machines)	\\				
-				& 	Memory scarce and expensive		&	Memory plenty and cheap				\\
+Infrastructure 	&	Data network in its infancy		&	Universal high speed data 			\\
+				&	Centralized computing (Main		&	networking, distributed  			\\
+				&		frames and mini computing)	&	computing (Networked servers )		\\				
+				& 	Memory scarce and expensive		&	and virtual machines Memory  		\\
+				& 	                         		&	plenty and cheap					\\
 \hline 
 \end{tabular}
 	\caption{Comparison of tendencies from 1975 and today}
@@ -64,7 +66,6 @@ Infrastructure 	&	Data network in its infancy		&	Universal high speed data netwo
 
 \subsection{NoSQL Databases}
 %http://www.mongodb.com/nosql
-%There are arguments against NoSQL that aren't simply defenses of SQL. However, the early pioneers of NoSQL (Google and Amazon especially) developed databases after determining that relational databases didn’t serve their needs—setting the ground for the direct assault on SQL.
 Currently relational databases are the predominant choice and the reasons for this are not trivial: they are constantly offered as one of the best mix of simplicity, robustness, flexibility, performance, scalability, and compatibility in managing generic data. However to offer all of this relational databases have to massively complex internally. For example, a relatively simple SELECT statement could have hundreds of potential query execution paths, which the optimizer would evaluate at run time. RDBMS determines the execution plan that best answers the requests by using cost based algorithms, and these are hidden to the users \cite{clouddb4}. Although RDBMS have provided database users with one of the best \emph{mix} of simplicity, robustness, flexibility, performance, scalability, and compatibility, their performance in each of these areas are not necessarily better than an alternate solution concentrating on one of these benefits specially. This has not been a problem so far because RDBMS popularity has dominated the need to push any of these boundaries, because if you really need that could be solved by a relational database, alternatives always were available to fill those gaps \cite{clouddb5}.
 
 Today however, there is a different situation(Table ~\ref{tab:nowandthen}). The new generation applications require processing of hundreds of gigabytes, terabytes, even petabytes of data. For an increasing number of applications, one of these benefits becoming more crucial and it is rapidly becoming mainstream. This requirement is beginning to eclipse others in importance. This benefit is \emph{Scalability}. Scalability is defined as the ability of a database to continue to function well when its volume is changed\cite{online6}. Every day more and more applications with massive workloads are launched, such as web services. Their scalability requirements can change very quickly and grow very large. There are cases where the load triples in a single day, and the hardware needs to be quickly upgraded. This scenario is too difficult to manage with a relational database. When scaling needs to be done on a single server node, it can be done on relational databases well. However, when the capacity of that single node is reached, the load needs to be distributed to multiple server nodes. This is when the complexities become overpowering, and hard to implement. When this amount reaches to hundreds or thousands of nodes, the characteristics that make RDBMS so charming drastically reduce their viability as platforms for large distribud systems \cite{clouddb4}. In response to these demands, a new type of database is created: NoSQL.
@@ -72,20 +73,17 @@ Today however, there is a different situation(Table ~\ref{tab:nowandthen}). The 
 The term of \emph{NoSQL} describes the new kind of databases that are available in response to the limitations of existing relational databases. In NoSQL databases, data is still stored in tables, but it does not have the expected normalization. Instead, one of the primary storage is key-value pairs which is similar to a hash map.  The transaction speed is overwhelming, and this requires large portions of the database to be in memory for quick reads and writes rather than stored on the disk. Old fashioned databases are not built with this kind of performance in mind. NoSQL databases allow for a great deal of optimization such as horizontal partitioning, or sharding which allows logically segregated data sets to be stored seperately \cite{clouddb9}. 
 
 
-So NoSQL is a database that is especially build for big data, and is the ideal choice for the data which increase really fast. How about healthcare? I assume that in healthcare this increase is not going to be as fast as big web companies, but still there are good sides of NoSQL that can be used. First thing that might be is the usage of dynamic schemas. In relational databases table schemas have to be defined before you can add data. For example you might want to store information about your patients such as name, phone numbers, address - a SQL database needs to know this in advance. So if you decide in further to change or add some fields like whether this patient has cancer or not, you will need to add that column to the database, and then migrate the entire database to the new schema. If the database is really large, this is a very slow process and this will cause significant downtime. In NoSQL databases on the other hand, there is no such a defined schema. That makes it easy to make significant application changes in real-time, without worrying about service interruptions - which means development is faster, code integration is more reliable, and less database administrator time is needed. If we want to add another column to our patient table, for example the blood type or whether he has a disease or not, it is done immediately in NoSQL databases.
+So NoSQL is a database that is especially build for big data, and is the ideal choice for the data which increase really fast. How about healthcare? I assume that in healthcare this increase is not going to be as fast as big web companies, but still there are good sides of NoSQL that can be used. First thing that might be is the usage of dynamic schemas. In relational databases table schemas have to be defined before you can add data. For example you might want to store information about your patients such as name, phone numbers, address - a SQL database needs to know this in advance. So if you decide in further to change or add some fields like whether this patient has cancer or not, you will need to add that column to the database, and then migrate the entire database to the new schema. If the database is really large, this is a very slow process and this will cause significant downtime. In NoSQL databases on the other hand, there is no such a defined schema. That makes it easy to make significant application changes in real-time, without worrying about service interruptions - which means development is faster, code integration is more reliable, and less database administrator time is needed. If we want to add another column to our patient table, for example the blood type or whether he has a disease or not, it is done immediately in NoSQL databases. Furthermore, all of the NoSQL databases are open-source and data manipulation is done through object oriented APIs. 
 
-
-Bad sides: Not standardized,
+However there are some cons of NoSQL databases as well. For example, NoSQL databases are not standardized and because they are kind of a new technology the support is not as easy as in relational databases. Encountered problems are quite new, and most of the NoSQL products are currently in the beta stage. 
 
 \section{Market Examples}
-% having sparse matrixes, use nosql
-% query by key
-% easy to store
-%As a simple example, you might have a Contacts database, and each person in the database could have varying fields. Some contacts might have several phone numbers of different types; some contacts might have several email addresses. Yes, you could normalize this into a relational database. But in this imagined application, rarely would you just get a list of phone numbers. Instead, most times you would want a name with all phone numbers associated with that name. Is it really necessary to force normalization into the picture and always store the phone numbers in a separate table, only to be joined during virtually every single lookup?
-%You can certainly do it either way: Store the phones in a separate phone table. Or you could use document storage and just group it all together, and then pull the data in as a single object. This is where a database such as MongoDB really shines. You can store ad-hoc records, and pull them into an object in one shot. You can index the collection on any fields you want (most likely name) and then pull the document into a single JavaScript object with one lookup.
-
-\section{Which one?}
-Adding a new information about a patient let's say tumor case. In SQL this needs to result as a new table column addition. Which needs to be run to the whole table in the database. However in NoSQL document based database this can be done easily with simple add statement. So the user can go and add. 
+Although NoSQL databases are kind of a new technology, there are examples of Electronic Health Records using NoSQL: \\
+VistA: \\
+CHCS: \\
+AHLTA:\\
+Epic:\\
+Cerner:\\
 
 
 \bibliography{bibliography/literature}
