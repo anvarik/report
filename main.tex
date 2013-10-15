@@ -1,5 +1,6 @@
 \documentclass{article}
-
+\bibliographystyle{plain}
+\usepackage{url}
 \begin{document}
 \title{Survey on Databases being used in Electronic Health Records}   % type title between braces
 \author{Enver Bahar}         % type author(s) between braces
@@ -20,17 +21,13 @@ In health care this need is becoming more obvious, as companies are desperately 
 There are several database systems available, and making a decision between available options is a pretty tough issue and mostly depends on the use cases. Let's talk about first the SQL databases which are also called Relational Databases. 
 
 \subsection{SQL - Relational Databases}
+SQL databases are formally named as Relational Database. Because it is manipulated by SQL language, the term "SQL Database" became more popular. Relational database is perceived by the user as a collection two dimensional tables. The concept is proposed by Dr. Codd in 1970 and since 1980 it is the predominant choice for the storage of information in new databases used for financial records, manufacturing and logistical information, personnel data, and much more \cite{online1}. Basically relational model consists of components such collection of objects and relations, set of operations to act on the relations and data integrity for accuracy and consistency original.
 
-%There are arguments against NoSQL that aren't simply defenses of SQL. However, the early pioneers of NoSQL (Google and Amazon especially) developed databases after determining that relational databases didn’t serve their needs—setting the ground for the direct assault on SQL.
-
-SQL databases ruled the database world last 40 years. 
-
-In Brainlab -if I am not wrong- all of the database backends are SQL based. 
-
+Relational databases are managed by Relational Database Management System. According to DB-Engine \cite{online2}, which is an initiative to collect and present information on database management systems, top five RDBMS are as following: Oracle, MySQL, Microsoft SQL Server(MSSQL), PostreSQL and DB2. In Brainlab all of the databases are relational databases/sql databases and the database management system being used is MSSQL.
 
 \subsection{NoSQL Databases}
 %http://www.mongodb.com/nosql
-
+%There are arguments against NoSQL that aren't simply defenses of SQL. However, the early pioneers of NoSQL (Google and Amazon especially) developed databases after determining that relational databases didn’t serve their needs—setting the ground for the direct assault on SQL.
 
 \section{Market Examples}
 % having sparse matrixes, use nosql
@@ -43,5 +40,5 @@ In Brainlab -if I am not wrong- all of the database backends are SQL based.
 Adding a new information about a patient let's say tumor case. In SQL this needs to result as a new table column addition. Which needs to be run to the whole table in the database. However in NoSQL document based database this can be done easily with simple add statement. So the user can go and add. 
 
 
-
+\bibliography{bibliography/literature}
 \end{document}
