@@ -8,7 +8,7 @@
  ]{hyperref}
 \begin{document}
 \title{Survey on Databases being used in Electronic Health Records}   % type title between braces
-\author{Enver Bahar}         % type author(s) between braces
+\author{E.B.}         % type author(s) between braces
 \date{\today}    % type date between braces
 \maketitle
 
@@ -78,12 +78,25 @@ So NoSQL is a database that is especially build for big data, and is the ideal c
 However there are some cons of NoSQL databases as well. For example, NoSQL databases are not standardized and because they are kind of a new technology the support is not as easy as in relational databases. Encountered problems are quite new, and most of the NoSQL products are currently in the beta stage. 
 
 \section{Market Examples}
-Although NoSQL databases are kind of a new technology, there are examples of Electronic Health Records using NoSQL: \\
-VistA: \\
-CHCS: \\
-AHLTA:\\
-Epic:\\
-Cerner:\\
+Although NoSQL databases are kind of a new technology, there are examples of Electronic Health Records using NoSQL such as VistA, CHCS, AHLTA, Epic, Cerner \cite{online4}. Although the exact background of these systems are not explained in detail still I can give a little bit information about them:
+\begin{itemize}
+	\item \textbf{VistA}: Veterans Health Information Systems and Technology Architecture(VistA) is an award winning health information technology system belonging to U.S. Department of Veterans Affairs. It provides an integrated patient electronic health record for VA patients, and administrative tools to help VA deliver the best quality medical care to Veterans\cite{online8}. The system underlying VistA is called MUMPS. It is the language/database and is an intellectual predecessor to modern NoSQL databases\cite{online7}.
+	\item \textbf{CHCS}: Composite Health Care System (CHCS) is a comprehensive medical informatics system designed, developed and deployed by Science Applications International Corporation (SAIC) for use by all U.S. Department of Defense military health care facilities\cite{online9}.
+	\item \textbf{AHLTA}: Armed Forces Health Longitudinal Technology Application (AHLTA) is an extension of CHCS and formerly was known as CHCS II\cite{online10}. 
+	\item \textbf{Epic}: EpiCare is an ambulatory electronic medical record. It organizes patient information suggests actions and guides coordinated care across physical care settings\cite{online11}.
+	\item \textbf{Cerner}: Cerner Ambulatory Electronic Health Record was designed by physicians to minimize clicks, provide comprehensive yet flexible documentation, and automate reporting processes\cite{online12}.
+\end{itemize}
+
+As it can be seen there are not much popular NoSQL examples of storage of electronic health care records. Mostly the underlying storage is chosen to be a relational database. Here are some of the examples:
+
+\begin{itemize}
+	\item \textbf{Microsoft HealthVault}: Microfost HealthVault help people to gather, store, use and share health information online\cite{online13}. They have a nice user interface enabling users to pass their information so that all information can be stored in a secure SQL storage\cite{online14}.
+	\item \textbf{Google Health}: Although it has been permanently discontinued\cite{online15}, Google Health was one of the EHR solutions using SQL as a storage layer\cite{online16}.
+	\item \textbf{Allscripts}: It is an American company that provides physician practices, hospitals, and other healthcare providers with practice management and electronic health record technology\cite{online21}. Their storage backend is SQL as well\cite{online22}.
+	\item \textbf{NextGen}: NextGen is an American software company specialized in heathcare. They develop and sell electronic health care software and practice management systems\cite{online17}. Their storage backend is also SQL and for RDBMS they use Microsoft MS-SQL\cite{online18}.
+	\item \textbf{PatientsLikeMe}: It is a network that connects people with others who have the same disease and track their experiences. They generate data about the real world nature disease to help researchers\cite{online19}. The storage backend of their system is SQL as well\cite{online20}. 
+\end{itemize}
+
 
 
 \bibliography{bibliography/literature}
