@@ -13,17 +13,16 @@
 \maketitle
 
 \begin{abstract}
-This article gives a brief comparison between SQL and NoSQL databases. It discusses what kind of database specifications might be beneficial for storage of Electronic Health Records (EHR), and gives examples of EHR systems using both SQL and NoSQL solutions. Finally it gives some suggestions for internal use cases. \\
+This article gives a brief comparison between SQL and NoSQL databases. It discusses what kind of database specifications might be beneficial for storage of Electronic Health Records (EHR), and gives examples of EHR systems using both SQL and NoSQL solutions. Finally it gives some suggestions for internal use case. \\
 \end{abstract} 
 
 Storage of data and its process are the key points in most of the business cases.  Healtcare industry which also deals with a lot of patient information is one of the key industries in this field. Healthcare information is not just about number of records or entities. It deals with hugely diversified data from different specialties (like cardialogy, neurology, etc..), and need to deal with data of Clinical Care, Medication, Labs, History, Demographics, Reports and more. And we should clearly understand that each and every data will have changes every now and then. For example, healthcare standards organization may ask any healthcare providers to introduce / modify / remove a procedure in any given specialty any time. Hence the platform design should incorporate all these demands without any compromise\cite{online3}. And maybe the most important point is that healtcare information is extremely conservative: people could die if the data is inconsistent\cite{online4}.
  
- % sounds lame rewrite first sentence
-Electronic Health Records are really important and getting more and more popular. Currently a lot of hospitals are trying to store EHR so that extensive queries can be run against and speed up the process of information retrieval about the storage systems. Even governments are spending billions of dollars to encourage doctors and hospitals to switch to electronic records to track patient care\cite{online5}.
+Currently a lot of hospitals are trying to store EHR so that extensive queries can be run against and speed up the process of information retrieval about the storage systems. Even governments are spending billions of dollars to encourage doctors and hospitals to switch to electronic records to track patient care\cite{online5}.
 
 \section{SQL vs NoSQL - which is better for EHR}
 
-There are several database systems available, and making a decision between available options is a pretty tough issue and mostly depends on the use cases. Beforehand a database selection, a lot of questions need to be answered such as: How big is the database? How will the database grow over time? What are the required access speeds? Should data be partitioned? In this section we will explain two main database branches, I will provide their pros and cons and try to compare them according to these questions.
+There are several database systems available, and making a decision between available options is a pretty tough issue and mostly depends on the use cases. Beforehand a database selection, a lot of questions need to be answered such as: How big is the database? How will the database grow over time? What are the required access speeds? Should data be partitioned? In this section I will explain two main database branches, provide their pros and cons and try to compare them according to these questions.
 
 Let's first talk about the SQL databases which are also called Relational Databases. 
 
@@ -36,7 +35,7 @@ Relational databases are managed by Relational Database Management System(RDBMS)
 
 Let's talk about the good sides of relational databases. First of all relational databases are a known quantity: there are proven solutions for nearly every major problem a web developer would run into. They have a long history, which means that they are stable, and have long established standard. All relational databases offer SQL as a language, therefore moving from one vendor to another is trivial. SQL is a complete database language that is written like the English language - the statements are easy and understandable. 
 
-One of the bad sides of relational databases is it might be really hard to design complex databases. One needs to carefully create ER diagrams, normalize the tables, choose the primary keys and set the relationships in order to make a good design which are kind of a long and hard task. Additionally, relational databases are not good if the data size is bigger than 500GB. Scaling after that amount of data is getting more and more troublesome, and can be really expensive as well. Furthermore, relational databases have a strict table-column-row organization. When the content is changing dynamically, or the content needs to be configurable, such a relational database might not be a good solution.
+Relational databases are not good if the data size is bigger than 500GB. Scaling after that amount of data is getting more and more troublesome, and require more work than NoSQL(which I will explain next). Although the path to a good relational database design is clearly defined, it might be still difficult to design complex databases. One needs to carefully create ER diagrams, normalize the tables, choose the primary keys and set the relationships in order to make it work. Furthermore, relational databases have a strict table-column-row organization. When the content is changing dynamically, or the content needs to be configurable, such a relational database might not be a good solution.
 
 \begin{table}[h]
 \centering
@@ -87,7 +86,7 @@ Although NoSQL databases are kind of a new technology, there are examples of Ele
 	\item \textbf{Cerner}: Cerner Ambulatory Electronic Health Record was designed by physicians to minimize clicks, provide comprehensive yet flexible documentation, and automate reporting processes\cite{online12}.
 \end{itemize}
 
-As it can be seen there are not much popular NoSQL examples of storage of electronic health care records. Mostly the underlying storage is chosen to be a relational database. Here are some of the examples:
+And here are some of the EHR examples that have chosen their storage layer as SQL:
 
 \begin{itemize}
 	\item \textbf{Microsoft HealthVault}: Microfost HealthVault help people to gather, store, use and share health information online\cite{online13}. They have a nice user interface enabling users to pass their information so that all information can be stored in a secure SQL storage\cite{online14}.
@@ -97,7 +96,32 @@ As it can be seen there are not much popular NoSQL examples of storage of electr
 	\item \textbf{PatientsLikeMe}: It is a network that connects people with others who have the same disease and track their experiences. They generate data about the real world nature disease to help researchers\cite{online19}. The storage backend of their system is SQL as well\cite{online20}. 
 \end{itemize}
 
+\section{Conclusion}
+In Section I, two types of databases are introduced: SQL and NoSQL. The brief historical background and their evolution are explained. Additionally their pros and cons are discussed. In Section II, the market examples of these two types of databases in EHR are given.
 
+Comparison of these two databases'  market examples does not provide a clear dominant database type, but we can see that SQL is a little bit more popular. Additionally, if we have a look to the EHR vendor market shares according to Physicians in Practice percentage, we see that it is almost equally distributed (Table ~\ref{tab:marketshare}). In this table, I only put the EHR solutions that I explained in Section II. There, two of them are NoSQL solutions and the other two are SQL. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l | l | l |}
+\hline
+Rank 			&	Vendor Name 	&	Type		& 	Overall Number of Phy. in Practive  \\
+\hline
+\hline
+1				&	Allscripts		&	SQL			&	10.6\%								\\
+\hline 
+3				&	Epic			&	NoSQL		&	10.3\%								\\
+\hline 
+4				&	NextGen			&	SQL			&	6.1\%								\\
+\hline 
+8				&	Cerner			&	NoSQL		&	3.5\%								\\
+\hline 
+\end{tabular}
+	\caption{Comparison of EHR vendor marketshare\protect\cite{online23}}
+	\label{tab:marketshare}
+\end{table}
+
+To sum up, in my opinion the usage of SQL or NoSQL is totally dependent on the use case. NoSQL is a solution for companies dealing with an extreme amount of data. It scales well, and it is much easier to add additional hardware. Big web companies such as Google or Facebook are using NoSQL to deal with big data. However we saw that both of the companies have worked on healthcare, and both of them chose to use an SQL database which is also interesting. In addition, NoSQL provides a schemaless table design, which makes it easier to update tables and add dynamic data which can be applied to healthcare. On the other hand NoSQL is a new technology and is not as stable as SQL.
 
 \bibliography{bibliography/literature}
 \end{document}
